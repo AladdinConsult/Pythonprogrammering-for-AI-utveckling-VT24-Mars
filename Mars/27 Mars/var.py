@@ -45,6 +45,10 @@
 # values.remove(2)
 # print(values[0])
 
+# values = [1,2,3]
+# values.insert(2,2.5)
+# print(values)
+
 # Exempel 9
 
 # values2 = (1,2,3)
