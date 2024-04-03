@@ -12,3 +12,7 @@ print(type(new_values))
 new_values = {value: value**2 for value in values}
 print(type(new_values))
 print(new_values)
+
+# Tuple Comprehension
+new_values = tuple([value**2 for value in values])
+print(type(new_values))
