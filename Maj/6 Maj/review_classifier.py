@@ -52,6 +52,14 @@ clf = SVC(kernel='linear')
 clf.fit(vectors, train_y)
 
 test_vectors = vectorizer.transform(test_X)
+for i, vector in enumerate(test_vectors):
+    prediction =clf.predict(vector)
+    if prediction[0] != test_y[i]:
+        print(f'Predicted: {prediction[0]}')
+        print(f'Was: {test_y[i]}')
+
+
+
 print(clf.score(test_vectors, test_y))
 
 
