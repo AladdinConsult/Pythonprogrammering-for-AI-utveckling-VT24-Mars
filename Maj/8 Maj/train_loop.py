@@ -47,7 +47,7 @@ def create_gan_model(alpha=2.0, descriminator_lr=0.0001, generator_lr=0.0001, ep
 
     real_data = load_real_data('./Maj/8 Maj/data/random_numbers.txt')
 
-    # Train GAN
+    # Train GAN 
     train_gan(generator, discriminator, gan_model, real_data, epochs=epochs, visualize=False)
 
 
