@@ -20,3 +20,13 @@ Second:
 Generated Mean: 0.510676383972168
 Generated Min: 0.12318354845046997
 Generated Max: 1.0293891429901123
+
+Third:
+Generated Mean: 0.5080715417861938
+Generated Min: 0.24894309043884277
+Generated Max: 1.0771218538284302
+
+Fourth:
+Generated Mean: 0.49148455262184143
+Generated Min: 0.004613269120454788
+Generated Max: 0.9994515776634216

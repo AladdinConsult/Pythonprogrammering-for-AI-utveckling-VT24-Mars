@@ -11,7 +11,7 @@ def load_real_data(filename):
     with open(filename, 'r') as infile:
         return[float(line.strip()) for line in infile]
 
-trained_generator = load_model('./Maj/13 Maj/models/gan_models.keras')
+trained_generator = load_model('./Maj/13 Maj/models/gan_models_new.keras')
 
 generate_samples = generate_samples_using_trained_model(trained_generator, n_samples=1000)
 real_data = load_real_data('./Maj/13 Maj/data/random_numbers.txt')

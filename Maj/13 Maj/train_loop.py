@@ -25,6 +25,12 @@ def plot_data(real_data, fake_data):
     plt.show()
 
 
+def custom_mse_with_weight_penalty(y_true, y_pred, alpha=1.0):
+    mse = tf.reduce_mean(tf.square(y_true - y_pred))
+    
+    penalty = tf.reduce_mean(tf.where(y_pred < 0, -y_pred, 0)) + tf.reduce_mean(tf.where(y_pred > 1, y_pred -1, 0))
+    return mse + alpha * penalty
+
 
 def train_gan(generator, discriminator, gan_model, real_data, epochs=1000, batch_size=128, visualize=False):
     half_batch = batch_size//2
@@ -75,7 +81,9 @@ def create_gan_model(alpha=2.0, descriminator_lr=0.0001, generator_lr=0.0001, ep
     validity = discriminator(initial_fake)
     gan_model = tf.keras.Model(initial_noise, validity)
 
-    gan_model.compile(optimizer=generator_optimizer, loss='binary_crossentropy', metrics=['accuracy'])
+    loss_function = lambda y_true, y_pred: custom_mse_with_weight_penalty(y_true, y_pred, alpha=alpha)
+
+    gan_model.compile(optimizer=generator_optimizer, loss= loss_function, metrics=['accuracy'])
 
     real_data = load_real_data('./Maj/13 Maj/data/random_numbers.txt')
 
@@ -87,4 +95,4 @@ def create_gan_model(alpha=2.0, descriminator_lr=0.0001, generator_lr=0.0001, ep
         generator.save(model_path)
 
 
-create_gan_model(epochs=10000, save_model=True)
+create_gan_model(epochs=10000, alpha=2.3, save_model=True, model_path='./Maj/13 Maj/models/gan_models_new.keras')
